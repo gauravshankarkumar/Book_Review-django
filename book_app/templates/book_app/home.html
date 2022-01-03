@@ -1,0 +1,12 @@
+<h1>GSK BOOK REVIEW</h1>
+
+{% for book in books %}
+
+<a href="{% url 'book_app:review' book.id %}">
+  <h2>{{ book.title }}</h2>
+  <img src="{{ book.image.url }}" width="300" />
+  <h3>Author: {{ book.author }}</h3>
+</a>
+<p>{{ book.description }}</p>
+
+{% endfor %}
