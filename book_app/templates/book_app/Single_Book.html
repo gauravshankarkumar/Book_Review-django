@@ -1,0 +1,61 @@
+<span>
+  <a href="{% url 'book_app:home' %}">Back to Home</a>
+</span>
+<div style="text-align: center; margin: auto">
+  <h1 style="color: rgb(110, 2, 2)">{{ book.title }}</h1>
+
+  <h2><img style="width: 80%" src="{{ book.image.url }}" width="300" /></h2>
+
+  {{ book.description|safe }}
+</div>
+<br />
+<br />
+
+<div>
+  <h4 style="color: rgb(255, 140, 0); font-size: 25px; text-align: center">
+    <label>Reviews Section</label>
+  </h4>
+  <!-- <p>It's simply dummy text of the printing and typesetting industry.</p> -->
+  <div style="text-align: center">
+    <hr />
+    {% for review in reviews %}
+    <div
+      style="
+        width: 95%;
+        border: 5px solid green;
+        padding: 5px;
+        margin-left: aoto;
+        margin-right: auto;
+        margin-top: 5px;
+      "
+    >
+      <p>
+        Reviewer Name :
+        <span style="color: rgb(0, 145, 255); font-weight: bold"
+          >{{ review.reviewer }}</span
+        >
+      </p>
+      <span>Rating : {{ review.rating }} </span>
+      <p>says: {{ review.review }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div
+  style="
+    width: 95%;
+    border: 5px solid yellow;
+    padding: 5px;
+    margin-left: aoto;
+    margin-right: auto;
+    margin-top: 5px;
+    color: rgb(255, 0, 0);
+    list-style-type: none;
+    text-align: center;
+  "
+>
+  <form action="{% url 'book_app:review' book.id %}" method="POST">
+    {% csrf_token %} {{form.as_p}}
+    <input type="submit" value="Submit Review" />
+  </form>
+</div>

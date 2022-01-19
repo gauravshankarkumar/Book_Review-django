@@ -1,12 +1,36 @@
-<h1>GSK BOOK REVIEW</h1>
+<div style="text-align: right">
+  <span>
+    <a href="#">About</a>
+  </span>
+</div>
+<div style="text-align: center">
+  <h1 style="color: black; font-size: 25px">GSK BOOK REVIEW</h1>
+  <div>
+    <hr />
 
-{% for book in books %}
-
-<a href="{% url 'book_app:review' book.id %}">
-  <h2>{{ book.title }}</h2>
-  <img src="{{ book.image.url }}" width="300" />
-  <h3>Author: {{ book.author }}</h3>
-</a>
-<p>{{ book.description }}</p>
-
-{% endfor %}
+    {% for book in books %}
+    <div
+      style="
+        width: 80%;
+        border: 15px solid green;
+        padding: 50px;
+        margin-left: aoto;
+        margin-right: auto;
+        margin-top: 10px;
+      "
+    >
+      <a
+        style="text-decoration: none"
+        href="{% url 'book_app:review' book.id %}"
+      >
+        <h2 style="color: rgb(110, 2, 2); font-size: 20px">{{ book.title }}</h2>
+        <img style="width: 70%" src=" {{ book.image.url }}" />
+        <h3 style="color: rgb(80, 118, 20); font-size: 15px">
+          Author: {{ book.author }}
+        </h3>
+      </a>
+      <p>{{ book.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
